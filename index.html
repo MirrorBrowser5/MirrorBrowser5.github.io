@@ -1,74 +1,230 @@
 <!DOCTYPE html>
-<html>
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=utf8">
+  <meta name="viewport" content="width=device-width" />
+  <meta name="Description" content="Mirror Browser 5: a HTML5 browser for CE/WEH/WEC">
+  <title>Mirror Browser 5 | CipherLab</title>
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/responsee.css">
+  <!-- CUSTOM STYLE -->
+  <link rel="stylesheet" href="css/template-style.css">
+  <link rel="stylesheet" href="css/prettify.css">
+  
+  <script type="text/javascript" src="js/jquery-1.8.3.min.js"></script>
+  <script type="text/javascript" src="js/jquery-ui.min.js"></script>  
+  <script type="text/javascript" src="js/modernizr.js"></script>
+  <script type="text/javascript" src="js/responsee.js"></script>
+  <script type="text/javascript" src="js/prettify.js"></script>
+  
+  <!--[if lt IE 9]>
+<script src="js/html5.js"></script>
+<![endif]-->
+<!-- for EULA -->
+<script type = "text/javascript">
+function getEULA(isName){
+cookieStr = localStorage.getItem("EULA");
+if (cookieStr != null) {
+startSlice = cookieStr.indexOf(isName+"=");
+if (startSlice == -1) {return false}
+endSlice = cookieStr.indexOf(";",startSlice+1)
+if (endSlice == -1){endSlice = cookieStr.length}
+isData = cookieStr.substring(startSlice,endSlice)
+isValue = isData.substring(isData.indexOf("=")+1,isData.length);
+return isValue; } return "EMPTY";
+}
 
-  <head>
-    <meta charset='utf-8' />
-    <meta http-equiv="X-UA-Compatible" content="chrome=1" />
-    <meta name="description" content="Mirror Browser 5 : " />
+function checkEULA(isName) {
+nValue = getEULA(isName);
+if (nValue != "Agreed") {
+window.location = "EULA.html";}  // redirect to the main page if cookie found
+}
+</script>
+<!-- for EULA -->
+</head>
+<body class="size-1140" onload="checkEULA('CipherLab');">
+  <!-- TOP NAV WITH LOGO -->
+  <header>  
+	<nav>
+	  <div class="line">
+		<div class="top-nav s-12 l-10 right">
+		  <p class="nav-text">Menu</p> 
+		  <ul class="right">
+			<li><a>Manual</a>
+			  <ul>
+				<li><a>Getting Started</a>
+				  <ul>
+					<li><a href="index.html#overview">Overview</a></li>
+					<li><a href="index.html#benefits">Benefits</a></li>
+					<li><a href="index.html#features">Features</a></li>
+					<li><a href="index.html#license">License</a></li>
+				  </ul>
+				</li>
+				<li><a>Configuration</a>
+				  <ul>
+					<li><a href="index.html#geolocation">Geolocation</a></li>
+					<li><a href="index.html#privacy">Privacy</a></li>
+					<li><a href="index.html#proxy">Proxy</a></li>
+					<li><a href="index.html#security">Security</a></li>
+					<li><a href="index.html#debug">Debug</a></li>
+				  </ul>
+				</li>
+			  </ul>
+			</li>
+			<li><a href="http://www.cipherlab.com">CipherLab</a></li>
+		  </ul>
+		</div>
+	  </div> 
+	</nav>
+  </header>      
+  <!-- ASIDE NAV AND CONTENT -->
+  <div class="line">
+	<div class="box  margin-bottom">
+	  <div class="margin">
+		<!-- CONTENT -->
+		<section class="s-12 l-12">
+      <h2> Getting Started</h2>
+      <h3 id="overview"> Overview</h3>
+      <p> Mirror Browser 5 is a future-proofed HTML5 browser solution of the stable and mature platform from CipherLab.</p>
+     
+      <p> We dedicate to provide browser solution since 2006 when introducing Mirror Browser based on IE.
+        Mirror Browser 5 equipped with Webkit will bring you even more flexible and powerful features to ease your worries for a less than affordable price.
+        It's not fancy, but designed to be ready for enterprise and industry to take a step forward to the future.
+	  </p>
+      <h3 id="benefits"> Benefits</h3>
+      <ul>
+        <li>Cost effective mult-platform development</li>
+        <li>Applications work offline with local storage</li>
+        <li>More accessible in solutions and developers</li>
+        <li>...</li>
+      </ul>
+      <h3 id="features"> Features</h3>
+      <ul>
+        <li>HTML5 compliance for embedded devices:<br />CP30, 9200, CP50, CP60, CP55, 9700</li>
+        <li>Geolocation solutions, including IP-based</li>
+        <li>NPAPI plugins for hardware extended supports: Reader and System</li>
+        <li>Flexible user interface with admin access control and Kiossk mode</li>
+        <li>...</li>
+      </ul>
+      <h3 id="license"> License</h3>
+      <p> Mirror Browser 5 is not free, we allow you to try this software with CipherLab supported devices without limitation, but you have to purchase valid license to grant the right to use it. By using this software, you agree to the EULA. To order Mirror Browser 5, please contact our sales representatives.</p>
+      <hr>
+      <h2> Configuration</h2>
+      <p> Before you start looking into the detail, it's encouraged to use Mirror Browser 5 and play around with it first,
+        as all features are pretty much self-explained.</p>
+        <img class="s-12 l-6 center" src="img/Screenshot.png" alt="Mirror Browser 5 - Screenshot">
+      <p>
+        However, there're more features hidden from the menu, so they will be listed and explained here:</p>
+      <ul>
+        <li><a href="http://en.wikipedia.org/wiki/HTML5">A reference to HTML5 wiki</a></li>
+        <li><a href="http://www.w3schools.com/html/html5_new_elements.asp">A reference to HTML5 new elements</a></li>
+      </ul>
+      <p> The following configuration options are available in Mirror Browser 5 by setting up the env.txt file:</p>
 
-    <link rel="stylesheet" type="text/css" media="screen" href="stylesheets/stylesheet.css">
+<!-- Geolocation -->
+      <h3 id="geolocation"> Geolocation</h3>
+      <ul>
+        <li>GPS coordination from device</li>
+        <li>IP-based location setting</li>
+      </ul>
+<pre class="prettyprint">
+"CL_GEO_SERVER_URL"
+// Default: http://vec.cipherlab.com.tw/ip_geo_location.php
 
-    <title>Mirror Browser 5</title>
-  </head>
+"CL_GEO_XML_FILE"
+// Default: geoinfo.txt</pre>
+	  <p>The default server only feedbacks an inaccurated location from the client IP address, 
+	    and it could be hosted on your own or improved by subscribing to paid services, 
+	    such as <a href="http://www.maxmind.com">Maxmind</a> or <a href="http://www.ip2location.com/">IP2Location</a>.</p>
 
-  <body>
+<!-- Privacy -->
+      <h3 id="privacy"> Privacy</h3>
+      <ul>
+        <li>Control cookie and history for browsing privacy</li>
+      </ul>
+<pre class="prettyprint">
+"CL_COOKIE_PATH"
+// Default: cookie.txt
 
-    <!-- HEADER -->
-    <div id="header_wrap" class="outer">
-        <header class="inner">
-          <a id="forkme_banner" href="https://github.com/MirrorBrowser5">View on GitHub</a>
+"CL_DISABLE_COOKIE"
+// Default: 0
 
-          <h1 id="project_title">Mirror Browser 5</h1>
-          <h2 id="project_tagline"></h2>
+"CL_MAX_COOKIES_SIZE"
+// Default: 51200 (bytes)
+// Recommended to be less than 102400
 
-        </header>
-    </div>
+"CL_MAX_HISTORY"
+// Default: 100</pre>
+	  
+<!-- Proxy -->
+      <h3 id="proxy"> Proxy</h3>
+      <ul>
+        <li>Proxy to gain control and security</li>
+      </ul>
+<pre class="prettyprint">
+"CL_PROXY_ENABLE"
+// Default: 0 (disable)
 
-    <!-- MAIN CONTENT -->
-    <div id="main_content_wrap" class="outer">
-      <section id="main_content" class="inner">
-        <h3>
-<a name="welcome-to-github-pages" class="anchor" href="#welcome-to-github-pages"><span class="octicon octicon-link"></span></a>Welcome to GitHub Pages.</h3>
+"CL_PROXY_ADDR"
+// Default: none
+// Example: 127.0.0.1
 
-<p>This automatic page generator is the easiest way to create beautiful pages for all of your projects. Author your page content here using GitHub Flavored Markdown, select a template crafted by a designer, and publish. After your page is generated, you can check out the new branch:</p>
+"CL_PROXY_PORT"
+// Default: none
+// Example: 8080
 
-<pre><code>$ cd your_repo_root/repo_name
-$ git fetch origin
-$ git checkout gh-pages
-</code></pre>
+"CL_PROXY_USERNAME"
+// Default: none
 
-<p>If you're using the GitHub for Mac, simply sync your repository and you'll see the new branch.</p>
+"CL_PROXY_PASSWORD"
+// Default: none</pre>
 
-<h3>
-<a name="designer-templates" class="anchor" href="#designer-templates"><span class="octicon octicon-link"></span></a>Designer Templates</h3>
+<!-- Security -->
+      <h3 id="security"> Security</h3>
+      <ul>
+        <li>Additional security settings for easier browsing</li>
+      </ul>
+<pre class="prettyprint">
+"CL_NOSECURITY_HOST"
+// Default: (none)
+// Example: html5.cipherlab.com to ignore all security on this host
 
-<p>We've crafted some handsome templates for you to use. Go ahead and continue to layouts to browse through them. You can easily go back to edit your page before publishing. After publishing your page, you can revisit the page generator and switch to another theme. Your Page content will be preserved if it remained markdown format.</p>
+"CL_USE_TLSV1"
+// Default: 0 (disable)
 
-<h3>
-<a name="rather-drive-stick" class="anchor" href="#rather-drive-stick"><span class="octicon octicon-link"></span></a>Rather Drive Stick?</h3>
+"CL_VERIFYCERT"
+// Default: none (disable)</pre>
 
-<p>If you prefer to not use the automatic generator, push a branch named <code>gh-pages</code> to your repository to create a page manually. In addition to supporting regular HTML content, GitHub Pages support Jekyll, a simple, blog aware static site generator written by our own Tom Preston-Werner. Jekyll makes it easy to create site-wide headers and footers without having to copy them across every page. It also offers intelligent blog support and other advanced templating features.</p>
+<!-- Debug -->
+      <h3 id="debug"> Debug</h3>
+      <ul>
+        <li>Debug options for Web development</li>
+      </ul>
+<pre class="prettyprint">
+"CL_DEBUG_LOG"
+// Default: 0 (disable)
 
-<h3>
-<a name="authors-and-contributors" class="anchor" href="#authors-and-contributors"><span class="octicon octicon-link"></span></a>Authors and Contributors</h3>
+"CL_DEBUG_CURL"
+// Default: 0 (disable)
 
-<p>You can <a href="https://github.com/blog/821" class="user-mention">@mention</a> a GitHub username to generate a link to their profile. The resulting <code>&lt;a&gt;</code> element will link to the contributor's GitHub Profile. For example: In 2007, Chris Wanstrath (<a href="https://github.com/defunkt" class="user-mention">@defunkt</a>), PJ Hyett (<a href="https://github.com/pjhyett" class="user-mention">@pjhyett</a>), and Tom Preston-Werner (<a href="https://github.com/mojombo" class="user-mention">@mojombo</a>) founded GitHub.</p>
+"CL_LOADTEST"
+// Default: 0 (disable)</pre>
+	  <p>The log will be saved as debug_log.txt under resources directory.</p>
 
-<h3>
-<a name="support-or-contact" class="anchor" href="#support-or-contact"><span class="octicon octicon-link"></span></a>Support or Contact</h3>
-
-<p>Having trouble with Pages? Check out the documentation at <a href="http://help.github.com/pages">http://help.github.com/pages</a> or contact <a href="mailto:support@github.com">support@github.com</a> and we’ll help you sort it out.</p>
-      </section>
-    </div>
-
-    <!-- FOOTER  -->
-    <div id="footer_wrap" class="outer">
-      <footer class="inner">
-        <p>Published with <a href="http://pages.github.com">GitHub Pages</a></p>
-      </footer>
-    </div>
-
-    
-
-  </body>
+<!-- || END OF CONFIGURATION || -->
+		</section>
+	  </div>
+	</div>  
+  </div>
+  <!-- FOOTER -->
+  <footer class="box">
+	<div class="line">
+	  <div class="s-12 l-6">
+		<p>Contents © 2014 CIPHERLAB Co., Ltd. All Rights Reserved.</p>
+	  </div>
+	  <div class="s-12 l-6">
+		<p class="right">Design by <a href="http://www.myresponsee.com/">Responsee</a></p>
+	  </div>
+	</div>
+  </footer>
+</body>
 </html>
